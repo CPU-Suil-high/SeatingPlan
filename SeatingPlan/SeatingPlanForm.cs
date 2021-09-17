@@ -12,7 +12,6 @@ namespace SeatingPlan {
     public partial class SeatingPlanForm : Form {
         public SeatingPlanForm() {
             InitializeComponent();
-            nameList.seatsManager = seatsManager;
         }
     }
 }

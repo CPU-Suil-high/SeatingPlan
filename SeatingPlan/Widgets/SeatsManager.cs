@@ -27,6 +27,7 @@ namespace SeatingPlan {
                 return nameList;
             }
             set {
+                value.UpdateNames(Names);
                 nameList = value;
             }
         }
@@ -41,29 +42,30 @@ namespace SeatingPlan {
             }
 
             get {
-                return names.ToList();
+                return names;
             }
         }
 
         List<int> CurNameIndexes {
             get {
-                if (Names.Count > curNameIndexes.Count) {
-                    List<int> temp = curNameIndexes;
-                    curNameIndexes = new List<int>();
+                //if (Names.Count > curNameIndexes.Count) {
+                //    List<int> temp = curNameIndexes;
+                //    curNameIndexes = new List<int>();
 
-                    for (int i = 0; i < temp.Count; i++) {
-                        if (Names.Count > temp[i]) {
-                            curNameIndexes.Add(temp[i]);
-                        }
-                    }
+                //    for (int i = 0; i < temp.Count; i++) {
+                //        if (Names.Count > temp[i]) {
+                //            curNameIndexes.Add(temp[i]);
+                //        }
+                //    }
 
-                    for (int i = curNameIndexes.Count; i < Names.Count; i++) {
-                        curNameIndexes.Add(i);
-                    }
-                } else if (Names.Count < curNameIndexes.Count) {
+                //    for (int i = curNameIndexes.Count; i < Names.Count; i++) {
+                //        curNameIndexes.Add(i);
+                //    }
+                //} else if (Names.Count < curNameIndexes.Count) {
 
-                }
-                return curNameIndexes.ToList();
+                //}
+                //return curNameIndexes.ToList();
+                return curNameIndexes;
             }
             set {
                 curNameIndexes = value;
@@ -72,22 +74,54 @@ namespace SeatingPlan {
 
         public SeatsManager() {
             InitializeComponent();
+
+            for (int i = 0; i < Names.Count; i++) {
+                CurNameIndexes.Add(i);
+            }
         }
 
         public void AddName(string name) {
-            names.Add(name);
+            Names.Add(name);
+            Names.Sort();
+            int index = Names.FindLastIndex(x => x == name);
+
+            for (int i = 0; i < CurNameIndexes.Count; i++) {
+                if (CurNameIndexes[i] >= index) {
+                    CurNameIndexes[i]++;
+                }
+            }
+
+            CurNameIndexes.Add(index);
+
+            UpdateSeats();
+        }
+
+        public void RemoveName(int index) {
+            Names.RemoveAt(index);
+            CurNameIndexes.Remove(index);
+
+            for (int i = 0; i < CurNameIndexes.Count; i++) {
+                if (CurNameIndexes[i] > index) {
+                    CurNameIndexes[i]--;
+                }
+            }
+
             UpdateSeats();
         }
 
         public void ShuffleNames() {
             Random random = new Random();
-            List<string> temp = Names;
-            
-            names = new List<string>();
+            List<int> temp = new List<int>();
+
+            for (int i = 0; i < Names.Count; i++) {
+                temp.Add(i);
+            }
+
+            CurNameIndexes.Clear();
 
             while (temp.Count > 0) {
                 int index = random.Next(0, temp.Count);
-                names.Add(temp[index]);
+                CurNameIndexes.Add(temp[index]);
                 temp.RemoveAt(index);
             }
 
@@ -96,6 +130,7 @@ namespace SeatingPlan {
 
         public void UpdateSeats() {
             seatView.UpdateNames(Names, CurNameIndexes);
+            nameList.UpdateNames(Names);
         }
 
         private void InitializeComponent() {
@@ -105,6 +140,7 @@ namespace SeatingPlan {
             // shuffleButton
             // 
             this.shuffleButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.shuffleButton.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.shuffleButton.Location = new System.Drawing.Point(12, 12);
             this.shuffleButton.Name = "shuffleButton";
             this.shuffleButton.Size = new System.Drawing.Size(75, 25);

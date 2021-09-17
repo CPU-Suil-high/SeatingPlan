@@ -22,7 +22,7 @@ namespace SeatingPlan {
         public Seat() {
             BackgroundImage = Properties.Resources.Seat;
             BackgroundImageLayout = ImageLayout.Stretch;
-            Font = new Font("메이플스토리", 10, FontStyle.Regular, GraphicsUnit.Point, ((byte)(129)));
+            Font = new Font("한컴 고딕", 10, FontStyle.Bold, GraphicsUnit.Point, ((byte)(129)));
             FlatStyle = FlatStyle.Flat;
             FlatAppearance.BorderSize = 0;
             TabStop = false;

@@ -25,29 +25,21 @@ namespace SeatingPlan {
         /// </summary>
         private void InitializeComponent() {
             this.nameList = new SeatingPlan.NameList();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.seats = new SeatingPlan.SeatsView();
             this.seatsManager = new SeatingPlan.SeatsManager();
-            this.nameList.SuspendLayout();
             this.SuspendLayout();
             // 
             // nameList
             // 
             this.nameList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.nameList.AutoScroll = true;
             this.nameList.BackColor = System.Drawing.SystemColors.Info;
-            this.nameList.Controls.Add(this.vScrollBar1);
-            this.nameList.Location = new System.Drawing.Point(821, 12);
+            this.nameList.Location = new System.Drawing.Point(871, 12);
             this.nameList.Name = "nameList";
-            this.nameList.Size = new System.Drawing.Size(149, 479);
+            this.nameList.SeatManager = seatsManager;
+            this.nameList.Size = new System.Drawing.Size(248, 479);
             this.nameList.TabIndex = 4;
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(128, 0);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(21, 479);
-            this.vScrollBar1.TabIndex = 1;
             // 
             // seats
             // 
@@ -59,7 +51,7 @@ namespace SeatingPlan {
             this.seats.Location = new System.Drawing.Point(15, 12);
             this.seats.Name = "seats";
             this.seats.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.seats.Size = new System.Drawing.Size(800, 400);
+            this.seats.Size = new System.Drawing.Size(850, 400);
             this.seats.TabIndex = 0;
             // 
             // seatsManager
@@ -71,14 +63,14 @@ namespace SeatingPlan {
             this.seatsManager.Name = "seatsManager";
             this.seatsManager.NameList = this.nameList;
             this.seatsManager.SeatsView = this.seats;
-            this.seatsManager.Size = new System.Drawing.Size(800, 73);
+            this.seatsManager.Size = new System.Drawing.Size(850, 73);
             this.seatsManager.TabIndex = 3;
             // 
             // SeatingPlanForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Orange;
-            this.ClientSize = new System.Drawing.Size(982, 503);
+            this.ClientSize = new System.Drawing.Size(1131, 503);
             this.Controls.Add(this.nameList);
             this.Controls.Add(this.seats);
             this.Controls.Add(this.seatsManager);
@@ -86,8 +78,6 @@ namespace SeatingPlan {
             this.Name = "SeatingPlanForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "SeatingPlan";
-            this.nameList.ResumeLayout(false);
-            this.nameList.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -97,7 +87,6 @@ namespace SeatingPlan {
         private SeatingPlan.SeatsView seats;
         private SeatingPlan.SeatsManager seatsManager;
         private SeatingPlan.NameList nameList;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
     }
 }
 

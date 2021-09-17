@@ -34,9 +34,13 @@ namespace SeatingPlan {
         }
 
         public void UpdateNames(List<string> names, List<int> nameIndexes) {
-            for (int i = 0; i < nameIndexes.Count; i++) {
-                int index = nameIndexes[i];
-                seatPictures[i].Text = names[index];
+            for (int i = 0; i < seatPictures.Length; i++) {
+                if (names.Count > i) {
+                    int index = nameIndexes[i];
+                    seatPictures[i].Text = names[index];
+                } else {
+                    seatPictures[i].Text = "";
+                }
             }
         }
 
