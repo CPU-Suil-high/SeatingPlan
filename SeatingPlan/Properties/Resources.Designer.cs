@@ -73,9 +73,39 @@ namespace SeatingPlan.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        public static System.Drawing.Bitmap FixedSeat {
+            get {
+                object obj = ResourceManager.GetObject("FixedSeat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        public static System.Drawing.Bitmap MovingSeat {
+            get {
+                object obj = ResourceManager.GetObject("MovingSeat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         public static System.Drawing.Bitmap Seat {
             get {
                 object obj = ResourceManager.GetObject("Seat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        public static System.Drawing.Bitmap SelectedSeat {
+            get {
+                object obj = ResourceManager.GetObject("SelectedSeat", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

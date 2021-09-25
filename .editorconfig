@@ -1,0 +1,4 @@
+﻿[*.{cs,vb}]
+
+# IDE0032: auto 속성 사용
+dotnet_style_prefer_auto_properties = false
