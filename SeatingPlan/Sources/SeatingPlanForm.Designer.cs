@@ -77,7 +77,7 @@ namespace SeatingPlan {
             // 
             // menuStrip
             // 
-            this.menuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(187)))), ((int)(((byte)(51)))));
+            this.menuStrip.BackColor = System.Drawing.Color.FromArgb((int)(((byte)(255))), ((int)(((byte)(187)))), ((int)(((byte)(51)))));
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
