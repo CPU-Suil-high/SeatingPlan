@@ -129,6 +129,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Exe File\SeatingPlan.exe" />
     <Content Include="Images\Delete.png" />
     <Content Include="Images\MovingSeat.png" />
     <Content Include="Images\Seat.png" />

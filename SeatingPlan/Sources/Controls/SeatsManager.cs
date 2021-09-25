@@ -32,7 +32,7 @@ namespace SeatingPlan {
             }
         }
 
-        private List<string> names = new List<string> {"21201 곽민서", "21202 구윤성", "21203 김규완", "21204 김민서", "21205 김영학", "21206 김태은", "21207 김현빈", "21208 변은지", "21209 서현수", "21210 성태성", "21211 손영휘", "21212 신소영", "21213 이민재", "21214 이시연", "21215 이정호", "21216 장연우", "21217 정우진", "21218 정태민", "21219 정현기", "21220 조현아", "21221 최유리", "21222 황효린"};
+        private List<string> names = new List<string>();
         private List<int> curNameIndexes = new List<int>();
         private bool[] fixedNames = new bool[Constants.MaxSeatCount];
 
