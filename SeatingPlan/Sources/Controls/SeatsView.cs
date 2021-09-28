@@ -49,6 +49,7 @@ namespace SeatingPlan {
         public bool IsMoveMode {
             set {
                 isMoveMode = value;
+                DrawGrid(CreateGraphics());
                 UpdateSeats();
             }
             get {
@@ -108,14 +109,19 @@ namespace SeatingPlan {
 
         public SeatsView() {
             InitializeComponent();
-            SizeChanged += (object sender, EventArgs e) => {
-                ((SeatsView)sender).UpdateSeats();
-            };
+            //SizeChanged += (object sender, EventArgs e) => {
+            //    UpdateSeats();
+            //};
 
             InitSeats();
             UpdateSeats();
 
             DoubleBuffered = true;
+        }
+        protected override void OnPaint(PaintEventArgs e) {
+            base.OnPaint(e);
+                        
+            DrawGrid(e.Graphics);
         }
 
         public void InitSeats() {
@@ -185,7 +191,7 @@ namespace SeatingPlan {
             for (int i = 0; i < Seats.Length; i++) {
                 Seat seat = Seats[i];
                 Seat movingSeat = MovingSeats[i];
-
+ 
                 seat.Width = seatWidth;
                 seat.Height = seatHeight;
                 movingSeat.Width = seatWidth;
@@ -229,6 +235,29 @@ namespace SeatingPlan {
             Point location = new Point(x, y);
 
             table.Location = location;
+
+        }
+
+        void DrawGrid(Graphics gr) {
+            if (!isMoveMode) {
+                gr.Clear(BackColor);
+                return;
+            }
+            Color color = Color.FromArgb(204, 136, 0);
+            Pen pen = new Pen(color);
+
+            for (int i = 1; i < Constants.SeatViewColumnCount; i++) {
+                int x = (int)Math.Round((float)i / Constants.SeatViewColumnCount * Width);
+
+                gr.DrawLine(pen, x, 0, x, Height);
+                gr.DrawLine(pen, x - 1, 0, x - 1, Height);
+            }
+            for (int i = 1; i < Constants.SeatViewRowCount; i++) {
+                int y = (int)Math.Round((float)i / Constants.SeatViewRowCount * Height);
+
+                gr.DrawLine(pen, 0, y, Width, y);
+                gr.DrawLine(pen, 0, y - 1, Width, y - 1);
+            }
         }
 
         void DropMovingSeat() {
@@ -391,8 +420,13 @@ namespace SeatingPlan {
             // SeatsView
             // 
             this.Controls.Add(this.table);
+            this.SizeChanged += new System.EventHandler(this.SeatsView_SizeChanged);
             this.ResumeLayout(false);
 
+        }
+
+        private void SeatsView_SizeChanged(object sender, EventArgs e) {
+            UpdateSeats();
         }
     }
 }

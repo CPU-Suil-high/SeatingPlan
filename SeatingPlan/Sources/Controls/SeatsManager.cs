@@ -38,9 +38,8 @@ namespace SeatingPlan {
 
         private Button sortButton;
         private Button moveModeButton;
-        private Button viewEmptySeatButton;
+        private Button emptySeatsButton;
         private Button resetButton;
-        private Button testButton;
 
         public List<string> Names {
             private set {
@@ -196,9 +195,8 @@ namespace SeatingPlan {
         private void InitializeComponent() {
             this.shuffleButton = new System.Windows.Forms.Button();
             this.sortButton = new System.Windows.Forms.Button();
-            this.testButton = new System.Windows.Forms.Button();
             this.moveModeButton = new System.Windows.Forms.Button();
-            this.viewEmptySeatButton = new System.Windows.Forms.Button();
+            this.emptySeatsButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -229,19 +227,6 @@ namespace SeatingPlan {
             this.sortButton.UseVisualStyleBackColor = false;
             this.sortButton.Click += new System.EventHandler(this.sortButton_Click);
             // 
-            // testButton
-            // 
-            this.testButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
-            this.testButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.testButton.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.testButton.Location = new System.Drawing.Point(354, 12);
-            this.testButton.Name = "testButton";
-            this.testButton.Size = new System.Drawing.Size(75, 50);
-            this.testButton.TabIndex = 0;
-            this.testButton.Text = "Test";
-            this.testButton.UseVisualStyleBackColor = false;
-            this.testButton.Click += new System.EventHandler(this.testButton_Click);
-            // 
             // moveModeButton
             // 
             this.moveModeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
@@ -255,18 +240,18 @@ namespace SeatingPlan {
             this.moveModeButton.UseVisualStyleBackColor = false;
             this.moveModeButton.Click += new System.EventHandler(this.movingModeButton_Click);
             // 
-            // viewEmptySeatButton
+            // emptySeatsButton
             // 
-            this.viewEmptySeatButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
-            this.viewEmptySeatButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.viewEmptySeatButton.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewEmptySeatButton.Location = new System.Drawing.Point(270, 12);
-            this.viewEmptySeatButton.Name = "viewEmptySeatButton";
-            this.viewEmptySeatButton.Size = new System.Drawing.Size(75, 50);
-            this.viewEmptySeatButton.TabIndex = 0;
-            this.viewEmptySeatButton.Text = "View Emtpy Seat";
-            this.viewEmptySeatButton.UseVisualStyleBackColor = false;
-            this.viewEmptySeatButton.Click += new System.EventHandler(this.viewEmptySeatButton_Click);
+            this.emptySeatsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
+            this.emptySeatsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.emptySeatsButton.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emptySeatsButton.Location = new System.Drawing.Point(270, 12);
+            this.emptySeatsButton.Name = "emptySeatsButton";
+            this.emptySeatsButton.Size = new System.Drawing.Size(75, 50);
+            this.emptySeatsButton.TabIndex = 0;
+            this.emptySeatsButton.Text = "Empty Seats";
+            this.emptySeatsButton.UseVisualStyleBackColor = false;
+            this.emptySeatsButton.Click += new System.EventHandler(this.emptySeatsButton_Click);
             // 
             // resetButton
             // 
@@ -286,7 +271,7 @@ namespace SeatingPlan {
             this.Controls.Add(this.shuffleButton);
             this.Controls.Add(this.sortButton);
             this.Controls.Add(this.moveModeButton);
-            this.Controls.Add(this.viewEmptySeatButton);
+            this.Controls.Add(this.emptySeatsButton);
             this.Controls.Add(this.resetButton);
             this.ResumeLayout(false);
 
@@ -306,15 +291,6 @@ namespace SeatingPlan {
             this.Sort();
         }
 
-        private void testButton_Click(object sender, EventArgs e) {
-            int[][] temp = SeatsView.GetSeatPositions();
-
-            for (int i = 0; i < temp.Length; i++) {
-                Console.WriteLine($"new int[]{{{temp[i][0]}, {temp[i][1]}}},");
-            }
-            Console.WriteLine();
-        }
-
         private void movingModeButton_Click(object sender, EventArgs e) {
             SeatsView.IsMoveMode = SeatsView.IsMoveMode ^ true;
 
@@ -325,13 +301,13 @@ namespace SeatingPlan {
             }
         }
 
-        private void viewEmptySeatButton_Click(object sender, EventArgs e) {
+        private void emptySeatsButton_Click(object sender, EventArgs e) {
             SeatsView.IsViewEmptySeat = SeatsView.IsViewEmptySeat ^ true;
 
             if (SeatsView.IsViewEmptySeat) {
-                viewEmptySeatButton.BackColor = System.Drawing.Color.FromArgb(204, 136, 0);
+                emptySeatsButton.BackColor = System.Drawing.Color.FromArgb(204, 136, 0);
             } else {
-                viewEmptySeatButton.BackColor = System.Drawing.Color.FromArgb(255, 170, 0);
+                emptySeatsButton.BackColor = System.Drawing.Color.FromArgb(255, 170, 0);
             }
         }
 
